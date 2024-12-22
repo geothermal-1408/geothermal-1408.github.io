@@ -1,3 +1,7 @@
+const EPS = 0.0001;
+const NEAR_CLIPPING_PLANE = 1;
+const FOV = Math.PI * 0.5;
+
 class vec2 {
   x: number;
   y: number;
@@ -8,13 +12,14 @@ class vec2 {
   static zero(): vec2 {
     return new vec2(0, 0);
   }
+  static fromAngle(angle: number): vec2 {
+    return new vec2(Math.cos(angle), Math.sin(angle));
+  }
   array(): [number, number] {
     return [this.x, this.y];
   }
   add(second: vec2): vec2 {
-    this.x += second.x;
-    this.y += second.y;
-    return this;
+   return new vec2(this.x + second.x, this.y + second.y);
   }
   div(second: vec2): vec2 {
     return new vec2(this.x / second.x, this.y / second.y);
@@ -47,17 +52,7 @@ class vec2 {
   distanceTo(second: vec2): number {
     return this.sub(second).length();
   }
-  static fromAngle(angle: number): vec2 {
-    return new vec2(Math.cos(angle), Math.sin(angle));
-  }
 }
-const EPS = 0.0001;
-// const GRID_ROW = 10;
-// const GRID_COL = 10;
-// const GRID_SIZE = new vec2(GRID_COL, GRID_ROW);
-// let SCENE = Array(GRID_ROW)
-//   .(0)
-//   .map(() => Array(GRID_COL).fill(0));
 
 function canvasSize(ctx: CanvasRenderingContext2D): vec2 {  
   return new vec2(ctx.canvas.width, ctx.canvas.height);
@@ -165,10 +160,14 @@ function minimap(
   for (let i = 0; i <= gridSize.y; ++i) {
     strokeline(ctx, new vec2(i, 0), new vec2(i, gridSize.x));
   }
-  ctx.strokeStyle = "magenta";
-  createdot(ctx, player.postion);
   
-  player.postion.add(vec2.fromAngle(player.direction));
+  createdot(ctx, player.postion);
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 0.05;
+  strokeline(ctx,player.postion,player.postion.add(vec2.fromAngle(player.direction).scale(NEAR_CLIPPING_PLANE)));
+  ctx.strokeStyle = "green";
+  strokeline(ctx,player.postion,player.postion.add(vec2.fromAngle(player.direction+Math.PI/4).scale(NEAR_CLIPPING_PLANE)));
+  strokeline(ctx,player.postion,player.postion.add(vec2.fromAngle(player.direction+7*Math.PI/4).scale(NEAR_CLIPPING_PLANE)));
   ctx.restore();
 }
 
@@ -211,23 +210,11 @@ class Player {
     throw new Error("2d context not supported");
   }  
    
-  let player = new Player(sceneSize(scene).mul(new vec2(0.15, 0.9)),0);
+  let player = new Player(
+    sceneSize(scene).mul(new vec2(0.57, 0.55))
+    ,Math.PI);
   let mapPos = vec2.zero().add(canvasSize(ctx).scale(0.05));
-  let cellsize = ctx.canvas.width * 0.03 ;
+  let cellsize = ctx.canvas.width * 0.05 ;
   let msize = sceneSize(scene).scale(cellsize);
-  
-  // game.addEventListener("mousemove", (e) => {
-  //   //msize = canvasSize(ctx).scale(0.5);
-  //   console.log(msize);
-    
-  //   p2 = new vec2(e.offsetX, e.offsetY)
-  //     .sub(mapPos)
-  //     .div(msize)
-  //     .mul(sceneSize(scene));
-
-  //   //minimap(ctx, p1, p2, vec2.zero(), canvasSize(ctx).scale(0.5), scene);
-  //   minimap(ctx, p1, p2, mapPos, msize, scene);
-  // });
-  //minimap(ctx, p1, p2, vec2.zero(), canvasSize(ctx).scale(0.5), scene);
   minimap(ctx, player, mapPos, msize, scene);
 })();
