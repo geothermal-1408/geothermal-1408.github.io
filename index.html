@@ -3,110 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Portfolio</title>
+    <title>Souvik Kisku | Software Developer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">Savvy</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
-    <section id="home" class="hero fade-in">
-        <div class="hero-content">
-            <h1>Souvik Kisku</h1>
-            <h2>SoftWare Devloper</h2>
-            <p>Crafting digital experiences with code</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </section>
+    <header>
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">Savvy<span>.</span></div>
+                <div class="menu-toggle">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-    <section id="about" class="about slide-in">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I'm a passionate developer with expertise in building modern web applications. With 5 years of experience, I specialize in creating responsive and user-friendly websites.</p>
-                    <div class="skills">
-                        <div class="skill">HTML5</div>
-                        <div class="skill">CSS3</div>
-                        <div class="skill">JavaScript</div>
-                        <div class="skill">Python</div>
-                        <div class="skill">Node.js</div>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <p class="intro-text">Hello, I'm</p>
+                    <h1>Souvik Kisku<span>.</span></h1>
+                    <h2>Software Developer</h2>
+                    <p class="hero-desc">Crafting digital experiences with code</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="cta-button primary-btn">View My Work</a>
+                        <a href="#contact" class="cta-button secondary-btn">Let's Talk</a>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?auto=format&fit=crop&q=80" alt="Developer workspace">
+                <div class="social-icons">
+                    <a href="https://github.com/geothermal-1408" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/souvik-kisku-843617328/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/SouvikKisku14/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
-        </div>
-    </section>
+            <div class="scroll-down">
+                <a href="#about">
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                    <div class="chevron"></div>
+                </a>
+            </div>
+        </section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>My Projects</h2>
-            <div class="project-grid">
-                <div class="project-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80" alt="Project 1">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A full-featured online shopping platform built with modern technologies.</p>
-                    <a href="#" class="project-link">View Project</a>
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <div class="section-line"></div>
                 </div>
-                <div class="project-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80" alt="Project 2">
-                    <h3>Task Management App</h3>
-                    <p>A productivity app helping teams collaborate effectively.</p>
-                    <a href="#" class="project-link">View Project</a>
-                </div>
-                <div class="project-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?auto=format&fit=crop&q=80" alt="Project 3">
-                    <h3>Portfolio Website</h3>
-                    <p>A responsive portfolio website with modern animations.</p>
-                    <a href="#" class="project-link">View Project</a>
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="image-container">
+                            <img src="resource/IMG_0193.JPG" alt="Souvik Kisku" class="profile-img">
+                            <div class="image-border"></div>
+                        </div>
+                    </div>
+                    <div class="about-info">
+                        <h3>Who am I?</h3>
+                        <p class="about-text">
+                            Hello There! I'm a passionate software developer who loves to code different things. I enjoy recreating different implementations and have a particular interest in functional programming. I'm constantly exploring new technologies and approaches to create efficient and elegant solutions.
+                        </p>
+                        <h3>My Skills</h3>
+                        <div class="skills">
+                            <div class="skill-tag">C</div>
+                            <div class="skill-tag">C++</div>
+                            <div class="skill-tag">Haskell</div>
+                            <div class="skill-tag">HTML5</div>
+                            <div class="skill-tag">CSS3</div>
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">Python</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-   <section id="contact" class="contact slide-in">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="mailto:hello@example.com" class="contact-link">hello@example.com</a>
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>My Projects</h2>
+                    <div class="section-line"></div>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="contact-link">Connect on LinkedIn</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💻</div>
-                    <h3>GitHub</h3>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="contact-link">View My Projects</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">🐦</div>
-                    <h3>Twitter</h3>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="contact-link">Follow Me</a>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="resource/view-green-forest-trees-with-co2.jpg" alt="Carbon Footprint Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Carbon Footprint Predictions</h3>
+                            <p>Predict carbon footprint in coal mines and provide solutions to tackle environmental challenges.</p>
+                            <div class="project-tech">
+                                <span>Typescript</span>
+                                <span>Python</span>
+                                <span>Next.js</span>
+                                
+                            </div>
+                            <a href="https://github.com/geothermal-1408/co2" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <span>View Project</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="resource/Gemini_Generated_Image_yldsgvyldsgvylds.jpg" alt="VerifyIQ Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>VerifyIQ</h3>
+                            <p>Store academic credentials on a blockchain for tamper-proof verification. Use ML to predict future skills based on credentials.</p>
+                            <div class="project-tech">
+                                <span>Vite</span>
+                                <span>Typescript</span>
+				<span>Postgres</span>
+                            </div>
+                            <a href="https://github.com/Rupayan2005/VerifyIQ" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <span>View Project</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <img src="resource/cards.png" alt="Aora Project">
+                        </div>
+                        <div class="project-content">
+                            <h3>Aora</h3>
+                            <p>A simple, elegant social media application focused on video sharing and community engagement.</p>
+                            <div class="project-tech">
+                                <span>React Native</span>
+                                <span>Appwrite</span>  
+                            </div>
+                            <a href="https://github.com/geothermal-1408/aorabysavvy" class="project-link" target="_blank" rel="noopener noreferrer">
+                                <span>View Project</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="education" class="education">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Education Journey</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2023 - 2027</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Bachelor of Technology in Computer Science</h3>
+                            <h4>Heritage Institute of Technology, Kolkata</h4>
+                            <p>CGPA: 8.2</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2021 - 2022</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Class 12th (WBCHSE)</h3>
+                            <h4>Barasat PCS Govt High School</h4>
+                            <p>Percentage: 80%</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">
+                            <span>2019 - 2020</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Class 10th (WBBSE)</h3>
+                            <h4>Barasat PCS Govt High School</h4>
+                            <p>Percentage: 92%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Let's Connect</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>Feel free to reach out if you want to collaborate on a project, have a job opportunity, or just want to say hello!</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kolkata, West Bengal, India</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:souvikkisku08@gmail.com">souvikkisku08@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+91 9123375125</span>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <a href="https://www.linkedin.com/in/souvik-kisku-843617328/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://github.com/geothermal-1408/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            <a href="https://x.com/SouvikKisku14/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                           
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="subject" name="subject" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Souvik Kisku. All rights reserved.</p>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Savvy<span>.</span></span>
+            </div>
+            <p>&copy; 2025 Souvik Kisku. All rights reserved.</p>
+            <div class="back-to-top">
+                <a href="#home" aria-label="Back to top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <script src="main.js"></script>
 </body>
-</
+</html>
