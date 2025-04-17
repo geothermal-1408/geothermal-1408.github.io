@@ -7,15 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelector(".nav-links")
   const navbar = document.querySelector(".navbar")
   const navLinksItems = document.querySelectorAll(".nav-link")
-    const sections = document.querySelectorAll("section")
-    const typingElement = document.querySelector('.typing-text');
+  const sections = document.querySelectorAll("section")
+  const typingElement = document.querySelector('.typing-text')
   const cursor = document.querySelector(".cursor")
   const cursorFollower = document.querySelector(".cursor-follower")
   const timelineItems = document.querySelectorAll(".timeline-item");
   const contactForm = document.getElementById("contactForm")
-  const projectCards = document.querySelectorAll(".project-card")
-  const skillTags = document.querySelectorAll(".skill-tag")
-
+  const formStatus = document.getElementById("form-status")
+  const typingText = document.getElementById("typing-text")
+    
   // Check for saved theme preference or prefer-color-scheme
   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
   const savedTheme = localStorage.getItem("theme")
@@ -127,26 +127,100 @@ document.addEventListener("DOMContentLoaded", () => {
   sections.forEach((section) => {
     observer.observe(section)
   })
+// Typing effect for intro text
+    const phrases = ["Hello, I'm", "Bonjour, je suis", "नमस्ते, मैं हूँ", "你好，我是","নমস্কার,আমি", "Hola, soy"]
+  let phraseIndex = 0
+  let charIndex = 0
+  let isDeleting = false
+  let typingSpeed = 100
 
+  function typeText() {
+    const currentPhrase = phrases[phraseIndex]
+
+    if (isDeleting) {
+      // Deleting text
+      typingText.textContent = currentPhrase.substring(0, charIndex - 1)
+      charIndex--
+      typingSpeed = 50 // Faster when deleting
+    } else {
+      // Typing text
+      typingText.textContent = currentPhrase.substring(0, charIndex + 1)
+      charIndex++
+      typingSpeed = 100 // Normal speed when typing
+    }
+
+    // If finished typing the phrase
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      isDeleting = true
+      typingSpeed = 1000 // Pause at the end of phrase
+    }
+    // If finished deleting the phrase
+    else if (isDeleting && charIndex === 0) {
+      isDeleting = false
+      phraseIndex = (phraseIndex + 1) % phrases.length // Move to next phrase
+      typingSpeed = 500 // Pause before typing next phrase
+    }
+
+    setTimeout(typeText, typingSpeed)
+  }
+
+  // Start the typing animation
+    setTimeout(typeText, 1000)
+    
   // Form submission handler
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault()
-      // Add form validation and submission logic here
-
+    
       // Simple form validation example
-      const name = document.getElementById("name").value
-      const email = document.getElementById("email").value
-      const message = document.getElementById("message").value
+	const name = document.getElementById("name").value
+	const email = document.getElementById("email").value
+	const message = document.getElementById("message").value
+	const subject = document.getElementById("subject").value
 
       if (name.trim() === "" || email.trim() === "" || message.trim() === "") {
-        alert("Please fill in all required fields")
+        showFormStatus("Please fill in all required fields", "error")
         return
       }
 
-      // Mock form submission success
-      alert("Thank you for your message! I will get back to you soon.")
-      contactForm.reset()
+	// Create message object
+      const newMessage = {
+        id: Date.now(),
+        name,
+        email,
+        subject: subject || "(No subject)",
+        message,
+        date: new Date().toISOString(),
+        read: false,
+      }
+
+      // Get existing messages from localStorage
+      const messages = JSON.parse(localStorage.getItem("contactMessages")) || []
+
+      // Add new message
+      messages.push(newMessage)
+
+      // Save to localStorage
+      localStorage.setItem("contactMessages", JSON.stringify(messages))
+
+      // Show success message
+      showFormStatus("Thank you for your message! I will get back to you soon.", "success")
+
+      // Reset form
+	contactForm.reset()
     })
+  }
+    // Show form status message
+  function showFormStatus(message, type) {
+    if (!formStatus) return
+
+    formStatus.textContent = message
+    formStatus.className = "form-status"
+    formStatus.classList.add(type)
+
+    // Hide the message after 5 seconds
+    setTimeout(() => {
+      formStatus.style.display = "none"
+    }, 5000)
   }
 })
